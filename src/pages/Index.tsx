@@ -3,6 +3,7 @@ import { PromptCard } from "@/components/PromptCard";
 import { FilterBar } from "@/components/FilterBar";
 import { PromptDetailModal } from "@/components/PromptDetailModal";
 import { StatsOverview } from "@/components/StatsOverview";
+import { HeroSection } from "@/components/HeroSection";
 import { prompts, Prompt, PromptCategory, Domain } from "@/data/prompts";
 
 const Index = () => {
@@ -69,17 +70,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">Prompt Engineering Guide</h1>
-          <p className="text-xl text-muted-foreground mb-2">
-            A comprehensive collection of prompt engineering patterns for developers and QA teams
-          </p>
-          <p className="text-muted-foreground">
-            Discover reusable prompts categorized by type and domain to enhance your AI-assisted development workflow
-          </p>
-        </div>
+      {/* Hero Section */}
+      <HeroSection />
 
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-16" id="prompts-section">
         <StatsOverview 
           filteredPromptsCount={filteredPrompts.length}
           totalPromptsCount={prompts.length}
@@ -100,22 +95,30 @@ const Index = () => {
           onClearFilters={handleClearFilters}
         />
 
-        <div className="mt-8">
+        <div className="mt-12">
           {filteredPrompts.length === 0 ? (
-            <div className="text-center py-12">
-              <h3 className="text-lg font-medium mb-2">No prompts found</h3>
-              <p className="text-muted-foreground mb-4">
-                Try adjusting your search criteria or clear the filters
+            <div className="text-center py-16 fade-in">
+              <div className="w-32 h-32 mx-auto mb-6 bg-gradient-primary rounded-full opacity-20 flex items-center justify-center">
+                <div className="w-16 h-16 bg-primary/30 rounded-full" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-3 text-gradient">No prompts found</h3>
+              <p className="text-muted-foreground text-lg mb-6 max-w-md mx-auto">
+                Try adjusting your search criteria or clear the filters to see more results
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPrompts.map((prompt) => (
-                <PromptCard 
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPrompts.map((prompt, index) => (
+                <div 
                   key={prompt.id} 
-                  prompt={prompt} 
-                  onViewDetails={handleViewDetails}
-                />
+                  className="fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <PromptCard 
+                    prompt={prompt} 
+                    onViewDetails={handleViewDetails}
+                  />
+                </div>
               ))}
             </div>
           )}

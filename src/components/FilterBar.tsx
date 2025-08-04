@@ -33,27 +33,27 @@ export const FilterBar = ({
   const hasActiveFilters = searchTerm || selectedCategory !== "all" || selectedDomain !== "all" || selectedTags.length > 0;
 
   return (
-    <div className="space-y-4 p-4 bg-card rounded-lg border">
+    <div className="card-enhanced p-6 fade-in">
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-4 w-4" />
           <Input
-            placeholder="Search prompts..."
+            placeholder="Search prompts by title, description, or tags..."
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="pl-10"
+            className="pl-10 border-primary/20 focus:border-primary/40 bg-background/50 transition-smooth"
           />
         </div>
         
         <div className="flex flex-col sm:flex-row gap-2">
           <Select value={selectedCategory} onValueChange={onCategoryChange}>
-            <SelectTrigger className="w-full sm:w-[200px]">
+            <SelectTrigger className="w-full sm:w-[200px] border-primary/20 focus:border-primary/40 bg-background/50 transition-smooth">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Categories</SelectItem>
+            <SelectContent className="bg-popover border-primary/20">
+              <SelectItem value="all" className="focus:bg-primary/10">All Categories</SelectItem>
               {promptCategories.map((category) => (
-                <SelectItem key={category} value={category}>
+                <SelectItem key={category} value={category} className="focus:bg-primary/10">
                   {category}
                 </SelectItem>
               ))}
@@ -61,13 +61,13 @@ export const FilterBar = ({
           </Select>
           
           <Select value={selectedDomain} onValueChange={onDomainChange}>
-            <SelectTrigger className="w-full sm:w-[200px]">
+            <SelectTrigger className="w-full sm:w-[200px] border-primary/20 focus:border-primary/40 bg-background/50 transition-smooth">
               <SelectValue placeholder="Select domain" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Domains</SelectItem>
+            <SelectContent className="bg-popover border-primary/20">
+              <SelectItem value="all" className="focus:bg-primary/10">All Domains</SelectItem>
               {domains.map((domain) => (
-                <SelectItem key={domain} value={domain}>
+                <SelectItem key={domain} value={domain} className="focus:bg-primary/10">
                   {domain}
                 </SelectItem>
               ))}
@@ -77,14 +77,19 @@ export const FilterBar = ({
       </div>
       
       {availableTags.length > 0 && (
-        <div>
-          <h4 className="text-sm font-medium mb-2">Popular Tags:</h4>
+        <div className="space-y-3">
+          <h4 className="text-sm font-medium text-gradient">Popular Tags:</h4>
           <div className="flex flex-wrap gap-2">
-            {availableTags.slice(0, 12).map((tag) => (
+            {availableTags.slice(0, 12).map((tag, index) => (
               <Badge
                 key={tag}
                 variant={selectedTags.includes(tag) ? "default" : "outline"}
-                className="cursor-pointer hover:bg-primary/80"
+                className={`cursor-pointer transition-spring hover:scale-105 fade-in ${
+                  selectedTags.includes(tag) 
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90" 
+                    : "hover:bg-primary/10 hover:text-primary border-primary/20"
+                }`}
+                style={{ animationDelay: `${index * 0.05}s` }}
                 onClick={() => onTagToggle(tag)}
               >
                 {tag}

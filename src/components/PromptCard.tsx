@@ -31,44 +31,48 @@ export const PromptCard = ({ prompt, onViewDetails }: PromptCardProps) => {
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
-      "Chain-of-Thought": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-      "Few-Shot Learning": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-      "Zero-Shot": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-      "Role-Based": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
-      "Step-by-Step": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200",
-      "Template-Based": "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200",
-      "Iterative Refinement": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
-      "Constraint-Based": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+      "Chain-of-Thought": "bg-primary/10 text-primary border-primary/20",
+      "Few-Shot Learning": "bg-success/10 text-success border-success/20",
+      "Zero-Shot": "bg-secondary text-secondary-foreground border-secondary",
+      "Role-Based": "bg-warning/10 text-warning border-warning/20",
+      "Step-by-Step": "bg-primary/15 text-primary border-primary/30",
+      "Template-Based": "bg-accent text-accent-foreground border-accent",
+      "Iterative Refinement": "bg-warning/15 text-warning border-warning/30",
+      "Constraint-Based": "bg-destructive/10 text-destructive border-destructive/20",
     };
-    return colors[category] || "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200";
+    return colors[category] || "bg-muted text-muted-foreground border-muted";
   };
 
   const getDomainColor = (domain: string) => {
     const colors: Record<string, string> = {
-      "Frontend": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
-      "Backend": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
-      "Architecture": "bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-200",
-      "QA/Testing": "bg-rose-100 text-rose-800 dark:bg-rose-900 dark:text-rose-200",
-      "DevOps": "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200",
-      "General": "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200",
+      "Frontend": "bg-success/10 text-success border-success/20",
+      "Backend": "bg-primary/10 text-primary border-primary/20",
+      "Architecture": "bg-secondary text-secondary-foreground border-secondary",
+      "QA/Testing": "bg-destructive/10 text-destructive border-destructive/20",
+      "DevOps": "bg-warning/10 text-warning border-warning/20",
+      "General": "bg-muted text-muted-foreground border-muted",
     };
-    return colors[domain] || "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200";
+    return colors[domain] || "bg-muted text-muted-foreground border-muted";
   };
 
   return (
-    <Card className="h-full hover:shadow-lg transition-shadow duration-200">
+    <Card className="h-full card-enhanced group">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1">
-            <CardTitle className="text-lg leading-tight">{prompt.title}</CardTitle>
-            <CardDescription className="mt-2">{prompt.description}</CardDescription>
+            <CardTitle className="text-lg leading-tight group-hover:text-gradient transition-all">
+              {prompt.title}
+            </CardTitle>
+            <CardDescription className="mt-2 text-muted-foreground">
+              {prompt.description}
+            </CardDescription>
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => copyToClipboard(prompt.prompt)}
-              className="h-8 w-8"
+              className="h-8 w-8 hover:bg-primary/10 hover:text-primary"
             >
               <Copy className="h-4 w-4" />
             </Button>
@@ -76,7 +80,7 @@ export const PromptCard = ({ prompt, onViewDetails }: PromptCardProps) => {
               variant="ghost"
               size="icon"
               onClick={() => onViewDetails(prompt)}
-              className="h-8 w-8"
+              className="h-8 w-8 hover:bg-primary/10 hover:text-primary"
             >
               <ExternalLink className="h-4 w-4" />
             </Button>
