@@ -1,15 +1,15 @@
 import { Sparkles, Zap, Target, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBackground from "@/assets/hero-bg.jpg";
-import barclaysLogo from "@/assets/barclays-logo.png";
+import barclaysBackground from "@/assets/barclays-modern-bg.jpg";
+import barclaysLogo from "@/assets/barclays-current-logo.svg";
 
 export const HeroSection = () => {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-        style={{ backgroundImage: `url(${heroBackground})` }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+        style={{ backgroundImage: `url(${barclaysBackground})` }}
       />
       
       {/* Gradient Overlay */}
@@ -30,8 +30,8 @@ export const HeroSection = () => {
             <div className="relative">
               <img 
                 src={barclaysLogo} 
-                alt="Barclays Logo" 
-                className="w-24 h-24 mx-auto pulse-glow rounded-2xl bg-white p-2"
+                alt="Barclays Current Logo" 
+                className="w-16 h-16 mx-auto"
               />
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-lg opacity-50" />
             </div>
