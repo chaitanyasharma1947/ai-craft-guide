@@ -1,7 +1,7 @@
 import { Sparkles, Zap, Target, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBackground from "@/assets/hero-bg.jpg";
-import aiIcon from "@/assets/ai-icon.png";
+import barclaysLogo from "@/assets/barclays-logo.png";
 
 export const HeroSection = () => {
   return (
@@ -25,6 +25,18 @@ export const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
         <div className="fade-in">
+          {/* Barclays Logo */}
+          <div className="flex justify-center mb-8">
+            <div className="relative">
+              <img 
+                src={barclaysLogo} 
+                alt="Barclays Logo" 
+                className="w-24 h-24 mx-auto pulse-glow rounded-2xl bg-white p-2"
+              />
+              <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-lg opacity-50" />
+            </div>
+          </div>
+
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient-hero leading-tight">
             Barclays Prompt Engineering

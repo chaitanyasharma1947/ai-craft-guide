@@ -20,12 +20,12 @@
     --popover: 240 5.9% 10%;
     --popover-foreground: 0 0% 98%;
 
-    /* Brand Colors */
-    --primary: 263 70% 60%;
-    --primary-glow: 264 83% 70%;
+    /* Brand Colors - Barclays Blue Theme */
+    --primary: 196 100% 47%; /* Barclays Cerulean #00aeef */
+    --primary-glow: 206 100% 60%; /* Lighter Barclays blue */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 202 100% 18%; /* Barclays Astronaut Blue #00395d */
     --secondary-foreground: 0 0% 98%;
 
     --muted: 240 3.7% 15.9%;
@@ -53,7 +53,7 @@
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(240 5.9% 10%));
     --gradient-card: linear-gradient(145deg, hsl(240 5.9% 10%), hsl(240 3.7% 15.9%));
-    --gradient-hero: linear-gradient(135deg, hsl(263 70% 60%) 0%, hsl(264 83% 70%) 50%, hsl(290 90% 75%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(196 100% 47%) 0%, hsl(206 100% 60%) 50%, hsl(216 100% 70%) 100%);
     
     /* Shadows */
     --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
