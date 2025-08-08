@@ -39,9 +39,9 @@ export const HeroSection = () => {
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient-hero leading-tight">
-            Prompt Engineering
+            Barclays Prompt Engineering
             <br />
-            <span className="text-gradient">Mastery Hub</span>
+            <span className="text-gradient">Hub</span>
           </h1>
 
           {/* Subtitle */}
