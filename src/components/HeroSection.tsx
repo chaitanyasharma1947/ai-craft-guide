@@ -25,30 +25,12 @@ export const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
         <div className="fade-in">
-          {/* AI Icon */}
-          <div className="flex justify-center mb-8">
-            <div className="relative">
-              <img 
-                src={aiIcon} 
-                alt="AI Icon" 
-                className="w-24 h-24 mx-auto pulse-glow rounded-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-lg opacity-50" />
-            </div>
-          </div>
-
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient-hero leading-tight">
             Barclays Prompt Engineering
             <br />
             <span className="text-gradient">Hub</span>
           </h1>
-
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Discover, learn, and master the art of prompt engineering with our comprehensive collection of 
-            <span className="text-primary font-semibold"> expert-crafted prompts</span> across all domains.
-          </p>
 
           {/* Feature Pills */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
